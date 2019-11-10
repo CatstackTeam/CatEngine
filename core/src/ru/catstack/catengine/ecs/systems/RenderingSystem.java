@@ -3,10 +3,10 @@ package ru.catstack.catengine.ecs.systems;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import ru.catstack.catengine.ecs.CatMappers;
+import ru.catstack.catengine.ecs.World;
 import ru.catstack.catengine.ecs.components.TextureComponent;
 import ru.catstack.catengine.ecs.components.TransformComponent;
 
@@ -15,16 +15,14 @@ import java.util.Comparator;
 public class RenderingSystem extends IteratingSystem {
 
     private SpriteBatch batch;
-    private OrthographicCamera camera;
 
     private Array<Entity> renderQueue;
     private Comparator<Entity> comparator;
 
-    public RenderingSystem(SpriteBatch batch, OrthographicCamera camera) {
+    public RenderingSystem(SpriteBatch batch) {
         super(Family.all(TransformComponent.class, TextureComponent.class).get());
 
         this.batch = batch;
-        this.camera = camera;
 
         renderQueue = new Array<>();
 
@@ -45,8 +43,7 @@ public class RenderingSystem extends IteratingSystem {
 
         renderQueue.sort(comparator);
 
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(World.getCamera().combined);
         batch.begin();
 
         for (Entity entity : renderQueue) {

@@ -14,6 +14,7 @@ public class CatMappers {
     public static ComponentMapper<RoundButtonComponent> roundButton = ComponentMapper.getFor(RoundButtonComponent.class);
     public static ComponentMapper<BoundsComponent> bounds = ComponentMapper.getFor(BoundsComponent.class);
     public static ComponentMapper<TweenComponent> tween = ComponentMapper.getFor(TweenComponent.class);
+    public static ComponentMapper<CameraComponent> camera = ComponentMapper.getFor(CameraComponent.class);
 
     public static ComponentMapper<PlayerComponent> player = ComponentMapper.getFor(PlayerComponent.class);
 }
