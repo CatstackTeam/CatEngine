@@ -1,9 +1,11 @@
 package ru.catstack.catengine.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import ru.catstack.catengine.MyGdxGame;
 import ru.catstack.catengine.assets.AssetsManager;
+import ru.catstack.catengine.settings.Core;
 
 public class LoadingScreen implements Screen {
 
@@ -15,7 +17,7 @@ public class LoadingScreen implements Screen {
 
     @Override
     public void show() {
-
+        Gdx.app.log("Engine", "Running on Cat Engine v" + Core.ENGINE_VERSION);
     }
 
     @Override
