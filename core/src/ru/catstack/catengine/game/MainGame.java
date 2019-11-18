@@ -10,6 +10,7 @@ import ru.catstack.catengine.ecs.components.*;
 import ru.catstack.catengine.game.ecs.components.PlayerComponent;
 import ru.catstack.catengine.objects.tween.FadeTween;
 import ru.catstack.catengine.objects.tween.MovingTween;
+import ru.catstack.catengine.objects.tween.RotationTween;
 import ru.catstack.catengine.settings.Core;
 
 import java.util.Random;
@@ -29,13 +30,13 @@ public class MainGame {
         entity.add(new ParentComponent());
         entity.add(new BoundsComponent());
         entity.add(new BoundsToTextureComponent());
-        entity.add(new TextureComponent(Textures.RBUTTON1.get()));
+        entity.add(new TextureComponent(Textures.BASIC.get()));
         entity.add(new TweenComponent());
-        entity.add(new RoundButtonComponent(Textures.RBUTTON1.get(), Textures.RBUTTON2.get(), action, 100));
 
         entity.getComponent(TransformComponent.class).position.set(-500, 0, 0);
         entity.getComponent(TweenComponent.class).tweens.add(new FadeTween(true, 2f));
         entity.getComponent(TweenComponent.class).tweens.add(new MovingTween(0, 0, 2f));
+        entity.getComponent(TweenComponent.class).tweens.add(new RotationTween(45, 2f));
 
         entity = World.createEntity();
         entity.add(new TransformComponent());
